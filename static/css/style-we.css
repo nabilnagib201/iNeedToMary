@@ -16,7 +16,7 @@
 body {
     font-family: "Work Sans", sans-serif;
     margin: 0;
-    overflow-x: hidden;
+    overflow-x: hidden; /* يمنع التمرير الأفقي */
     background-color: #f5f7fb;
 }
 
@@ -25,11 +25,13 @@ body {
     padding-right: 20px;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
+    max-width: 1170px;
 }
 
-@media (min-width: 768px) { .container { width: 750px; } }
-@media (min-width: 992px) { .container { width: 970px; } }
-@media (min-width: 1200px) { .container { width: 1170px; } }
+@media (min-width: 768px) { .container { max-width: 750px; } }
+@media (min-width: 992px) { .container { max-width: 970px; } }
+@media (min-width: 1200px) { .container { max-width: 1170px; } }
 /* ================= End Global Rules ================= */
 
 
@@ -112,6 +114,7 @@ h1::after {
     padding: 40px;
     margin: 40px auto;
     width: 85%;
+    max-width: 100%; /* لا تتجاوز الشاشة */
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -148,7 +151,6 @@ ul li {
     padding-right: 20px;
 }
 
-/* النقطة قبل كل عنصر li */
 ul li::before {
     content: "";
     width: 8px;
@@ -160,13 +162,12 @@ ul li::before {
     border-radius: 50%;
 }
 
-/* تنسيق a داخل li بنفس الـ li - لينك في نفس السطر */
 ul li a {
     display: inline;
     white-space: nowrap;
     color: var(--maincolor);
     text-decoration: none;
-    padding-right: 0; /* لأن الـ li نفسها ليها padding */
+    padding-right: 0;
 }
 
 ul li a:hover {
@@ -200,9 +201,10 @@ footer {
 
 /* ================= Start Transfers Box ================= */
 .box-transfers {
-    display: flex;              /* يخليهم في خط واحد */
-    justify-content: center;    /* في النص */
-    gap: 5cm;                   /* مسافة 5 سم بينهم */
+    display: flex;
+    flex-wrap: wrap;     /* يسمح بالانتقال للأسفل على الشاشات الصغيرة */
+    justify-content: center;
+    gap: 20px;           /* مسافة مرنة */
 }
 
 .transfers-1 {
@@ -214,9 +216,22 @@ footer {
 }
 
 .transfers-1:hover {
-    color: #ffcc00; /* أصفر أفتح عند المرور */
+    color: #ffcc00;
 }
 /* ================= End Transfers Box ================= */
+
+
+/* ================= Start Photos ================= */
+.photo {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #333;
+}
+/* ================= End Photos ================= */
 
 
 /* ================= Responsive ================= */
@@ -230,17 +245,9 @@ footer {
 
     h1 { font-size: 28px; }
     .img-logo-left, .img-logo-right { width: 50px; }
+    .box-transfers { gap: 15px; }
 }
 
 @media (max-width: 576px) {
     ul li a { font-size: 16px; }
 }
-
-  .photo {
-    width: 300px;          /* تحديد عرض الصورة */
-    height: 200px;         /* تحديد ارتفاع الصورة */
-    object-fit: cover;     /* يحافظ على نسبة الصورة ويقص الجزء الزائد إذا لزم */
-    display: block;        /* يجعل الصورة عنصر كتلة */
-    margin: 20px auto;     /* يجعل الصورة في الوسط أفقياً ويعطيها مسافة فوق وتحت */
-    border: 2px solid #333; /* مثال لإضافة إطار */
-  }
