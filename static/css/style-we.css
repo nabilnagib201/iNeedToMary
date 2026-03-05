@@ -10,13 +10,14 @@
 /* ================= Start Global Rules ================= */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     text-align: right;
 }
 
 body {
     font-family: "Work Sans", sans-serif;
-    margin: 0;
-    overflow-x: hidden; /* يمنع التمرير الأفقي */
+    overflow-x: hidden; /* يمنع التمرير الأفقي تمامًا */
     background-color: #f5f7fb;
 }
 
@@ -35,45 +36,29 @@ body {
 /* ================= End Global Rules ================= */
 
 
-/* ================= Start Page Title ================= */
+/* ================= Start Header ================= */
 header {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     position: relative;
 }
-
-header .img { width: 40px; }
-header .img img { max-width: 100%; }
 
 header .logo {
     display: flex;
     position: relative;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-header .logo .img {
-    max-width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-19%);
-    right: -10px;
+    margin: 10px auto;
 }
 
 header .logo h1 {
-    margin-right: 30px;
     color: var(--maincolor);
 }
-
-header .container { display: flex; flex-wrap: wrap; justify-content: space-between; }
 
 h1 {
     text-align: center;
     color: var(--maincolor);
     font-size: 40px;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin: 40px 0 20px 0;
     position: relative;
 }
 
@@ -88,19 +73,16 @@ h1::after {
     transform: translateX(50%);
     border-radius: 10px;
 }
-/* ================= End Page Title ================= */
+/* ================= End Header ================= */
 
 
 /* ================= Start Logos ================= */
 .img-logo-left,
 .img-logo-right {
-    position: absolute;
-    top: 20px;
-    width: 70px;
+    position: relative;   /* بدل absolute لتجنب التمرير */
+    max-width: 50px;
+    margin: 10px auto;
 }
-
-.img-logo-left { left: 20px; }
-.img-logo-right { right: 20px; }
 
 .img-logo-left:hover,
 .img-logo-right:hover { transform: scale(1.1); transition: 0.3s; }
@@ -112,9 +94,9 @@ h1::after {
 .goal,
 .special-thanks {
     padding: 40px;
-    margin: 40px auto;
-    width: 85%;
-    max-width: 100%; /* لا تتجاوز الشاشة */
+    margin: 20px auto;
+    width: 100%;
+    max-width: 100%;
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -167,7 +149,6 @@ ul li a {
     white-space: nowrap;
     color: var(--maincolor);
     text-decoration: none;
-    padding-right: 0;
 }
 
 ul li a:hover {
@@ -188,13 +169,12 @@ p {
 
 /* ================= Start Footer ================= */
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     text-align: center;
     background-color: #f1f1f1;
     padding: 10px;
     font-family: Arial;
+    width: 100%;
+    position: relative;
 }
 /* ================= End Footer ================= */
 
@@ -202,9 +182,12 @@ footer {
 /* ================= Start Transfers Box ================= */
 .box-transfers {
     display: flex;
-    flex-wrap: wrap;     /* يسمح بالانتقال للأسفل على الشاشات الصغيرة */
+    flex-wrap: wrap;      /* العناصر تنتقل لأسفل عند الحاجة */
     justify-content: center;
-    gap: 20px;           /* مسافة مرنة */
+    gap: 10px;            /* مسافة آمنة للشاشات الصغيرة */
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .transfers-1 {
@@ -236,16 +219,10 @@ footer {
 
 /* ================= Responsive ================= */
 @media (max-width: 768px) {
-    .team,
-    .goal,
-    .special-thanks {
-        width: 95%;
-        padding: 25px;
-    }
-
     h1 { font-size: 28px; }
-    .img-logo-left, .img-logo-right { width: 50px; }
-    .box-transfers { gap: 15px; }
+    .team, .goal, .special-thanks { padding: 20px; }
+    .img-logo-left, .img-logo-right { max-width: 40px; }
+    .box-transfers { gap: 5px; }
 }
 
 @media (max-width: 576px) {
